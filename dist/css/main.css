@@ -1,0 +1,372 @@
+/*! project-name v0.0.1 | (c) 2019 YOUR NAME | MIT License | http://link-to-your-git-repo.com */
+/**
+ * @section Base Styles
+ */
+/* line 5, src/sass/components/_base.scss */
+body {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3C4356), color-stop(98%, #4F576C));
+  background-image: linear-gradient(-180deg, #3C4356 0%, #4F576C 98%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* line 12, src/sass/components/_base.scss */
+.recipes-wrapper {
+  position: relative;
+  margin-bottom: 50px;
+  padding: 120px 0 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 20, src/sass/components/_base.scss */
+.recipes-intro {
+  font-family: Lato-Regular;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 0 15px;
+}
+
+/* line 27, src/sass/components/_base.scss */
+.recipes-inner {
+  width: 100vw;
+  height: 100%;
+  margin: 0 0 0 -15px;
+}
+
+/* line 1, src/sass/components/_recipe.scss */
+.recipe-list {
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  width: 324px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* line 10, src/sass/components/_recipe.scss */
+.recipe {
+  z-index: 5;
+  position: absolute;
+  top: 135px;
+  background-color: #fff;
+  padding: 7px 10px;
+}
+
+/* line 17, src/sass/components/_recipe.scss */
+.recipe.opening {
+  -webkit-animation-name: openRecipe;
+          animation-name: openRecipe;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+/* line 22, src/sass/components/_recipe.scss */
+.recipe.open {
+  z-index: 8;
+  top: -30px;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+/* line 29, src/sass/components/_recipe.scss */
+.recipe.closing {
+  -webkit-animation-name: closeRecipe;
+          animation-name: closeRecipe;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+@-webkit-keyframes openRecipe {
+  0% {
+    z-index: 5;
+    top: 135px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    z-index: 5;
+    top: -150px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  51% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+    top: -30px;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+}
+
+@keyframes openRecipe {
+  0% {
+    z-index: 5;
+    top: 135px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    z-index: 5;
+    top: -150px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  51% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+    top: -30px;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+}
+
+@-webkit-keyframes closeRecipe {
+  0% {
+    z-index: 8;
+    top: -30px;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  50% {
+    z-index: 8;
+  }
+  51% {
+    z-index: 5;
+    top: -150px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    z-index: 5;
+    top: 135px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes closeRecipe {
+  0% {
+    z-index: 8;
+    top: -30px;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  50% {
+    z-index: 8;
+  }
+  51% {
+    z-index: 5;
+    top: -150px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    z-index: 5;
+    top: 135px;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+/* line 78, src/sass/components/_recipe.scss */
+.recipe-subhead {
+  clear: both;
+  margin: 0;
+  font-family: BilboSwashCaps-Regular;
+  font-size: 17px;
+  color: #4F576C;
+}
+
+/* line 86, src/sass/components/_recipe.scss */
+.recipe__tab {
+  position: absolute;
+  z-index: 9;
+  top: -23px;
+  left: 5px;
+  height: 14px;
+  padding: 8px 6px 0 22px;
+  border-bottom: 1px solid #ccc;
+  font-family: Lato-Regular;
+  font-size: 10px;
+  line-height: 8px;
+  color: #6F694C;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  cursor: pointer;
+}
+
+/* line 102, src/sass/components/_recipe.scss */
+.active .recipe__tab {
+  border-bottom: 1px solid #fff;
+}
+
+/* line 106, src/sass/components/_recipe.scss */
+.pumpkin-pie .recipe__tab {
+  background: url("/interactive/2019/12/recipes/images/pumpkin-tab.png") no-repeat left 3px center #fff;
+}
+
+/* line 110, src/sass/components/_recipe.scss */
+.hot-chocolate .recipe__tab {
+  left: 90px;
+  background: url("/interactive/2019/12/recipes/images/hot-chocolate.png") no-repeat left 3px center #fff;
+}
+
+/* line 115, src/sass/components/_recipe.scss */
+.yule-log .recipe__tab {
+  left: 183px;
+  background: url("/interactive/2019/12/recipes/images/yule-log-tab.png") no-repeat left 3px center #fff;
+}
+
+/* line 121, src/sass/components/_recipe.scss */
+.recipe__left {
+  display: block;
+  float: left;
+  width: 34%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 127, src/sass/components/_recipe.scss */
+.recipe__right {
+  display: block;
+  float: left;
+  width: 66%;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 135, src/sass/components/_recipe.scss */
+img.recipe__portrait {
+  display: block;
+  float: left;
+  width: 100px;
+  border: 2px solid #3C4356;
+  margin: 0 0 10px;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* line 150, src/sass/components/_recipe.scss */
+.recipe__ingredients {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* line 154, src/sass/components/_recipe.scss */
+.recipe__ingredients li {
+  font-family: Kalam-Regular;
+  font-size: 10px;
+  color: #6F694C;
+  border-bottom: 1px solid #4F576C;
+}
+
+/* line 161, src/sass/components/_recipe.scss */
+.recipe__name {
+  text-align: center;
+  font-family: BilboSwashCaps-Regular;
+  font-size: 19px;
+  color: #4F576C;
+  margin: 0 0 10px;
+}
+
+/* line 168, src/sass/components/_recipe.scss */
+.recipe__details {
+  margin-bottom: 10px;
+}
+
+/* line 171, src/sass/components/_recipe.scss */
+.recipe__details:before, .recipe__details:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+/* line 179, src/sass/components/_recipe.scss */
+.recipe__directions {
+  font-family: Kalam-Regular;
+  font-size: 10px;
+  color: #6F694C;
+  line-height: 12px;
+}
+
+/* line 185, src/sass/components/_recipe.scss */
+.recipe__directions p {
+  margin: 0 0 10px;
+}
+
+/* line 190, src/sass/components/_recipe.scss */
+.recipe__servings {
+  margin-right: 10px;
+}
+
+/* line 197, src/sass/components/_recipe.scss */
+.recipe__servings,
+.recipe__time {
+  display: block;
+  float: left;
+  font-family: Kalam-Regular;
+  font-size: 10px;
+  color: #6F694C;
+}
+
+/* line 205, src/sass/components/_recipe.scss */
+.recipe__servings .recipe-subhead,
+.recipe__time .recipe-subhead {
+  float: left;
+  line-height: 1em;
+  padding-right: 5px;
+}
+
+/* line 1, src/sass/components/_recipe-box.scss */
+.recipe-box {
+  position: relative;
+  width: 350px;
+  height: 342px;
+  margin: 0 auto 70px;
+  padding-top: 100px;
+  background: url("/interactive/2019/12/recipes/images/box-full-mobile.png") no-repeat bottom center;
+  background-size: contain;
+}
+
+/* line 13, src/sass/components/_recipe-box.scss */
+.recipe-box__foreground {
+  position: absolute;
+  z-index: 6;
+  top: 271px;
+  width: 350px;
+  height: 173px;
+  background: url("/interactive/2019/12/recipes/images/box-front.png") no-repeat bottom center;
+  background-size: contain;
+}
+
+/* line 23, src/sass/components/_recipe-box.scss */
+.recipe-box__color-block {
+  z-index: 5;
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+  height: 200px;
+  background-color: #4F576C;
+}
+
+/* line 32, src/sass/components/_recipe-box.scss */
+.recipe-box__food {
+  position: absolute;
+  z-index: 7;
+  left: calc(50% - 208px);
+  bottom: 0;
+  width: 417px;
+  height: 225px;
+  background: url("/interactive/2019/12/recipes/images/food.png") no-repeat bottom center;
+  background-size: cover;
+}

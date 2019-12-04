@@ -1,0 +1,41 @@
+.recipe-box {
+  position: relative;
+  width: 350px;
+  height: 342px;
+  margin: 0 auto 70px;
+  padding-top: 100px;
+  // overflow-x: visible;
+  // overflow-y: hidden;
+  background: url('/interactive/2019/12/recipes/images/box-full-mobile.png') no-repeat bottom center;
+  background-size: contain;
+}
+
+.recipe-box__foreground {
+  position: absolute;
+  z-index: 6;
+  top: 271px;
+  width: 350px;
+  height: 173px;
+  background: url('/interactive/2019/12/recipes/images/box-front.png') no-repeat bottom center;
+  background-size: contain;
+}
+
+.recipe-box__color-block {
+  z-index: 5;
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+  height: 200px;
+  background-color: #4F576C;
+}
+
+.recipe-box__food {
+  position: absolute;
+  z-index: 7;
+  left: calc(50% - 208px);
+  bottom: 0;
+  width: 417px;
+  height: 225px;
+  background: url('/interactive/2019/12/recipes/images/food.png') no-repeat bottom center;
+  background-size: cover;
+}

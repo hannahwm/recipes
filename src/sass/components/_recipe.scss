@@ -1,0 +1,210 @@
+.recipe-list {
+  position: relative;
+  list-style-type: none;
+  padding-left: 0;
+  width: 324px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.recipe {
+  z-index: 5;
+  position: absolute;
+  top: 135px;
+  background-color: #fff;
+  padding: 7px 10px;
+
+  &.opening {
+    animation-name: openRecipe;
+    animation-duration: 2s;
+  }
+
+  &.open {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+    animation-play-state: paused;
+  }
+
+  &.closing {
+    animation-name: closeRecipe;
+    animation-duration: 2s;
+  }
+
+}
+
+@keyframes openRecipe {
+  0% {
+    z-index: 5;
+    top: 135px;
+    transform: scale(1.0);
+    }
+  50% {
+    z-index: 5;
+    top: -150px;
+    transform: scale(1.0);
+  }
+  51% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes closeRecipe {
+  0% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+  50% {
+    z-index: 8;
+  }
+  51% {
+    z-index: 5;
+    top: -150px;
+    transform: scale(1.0);
+  }
+  100% {
+    z-index: 5;
+    top: 135px;
+    transform: scale(1.0);
+    }
+}
+
+.recipe-subhead {
+  clear: both;
+  margin: 0;
+  font-family: BilboSwashCaps-Regular;
+  font-size: 17px;
+  color: #4F576C;
+}
+
+.recipe__tab {
+  position: absolute;
+  z-index: 9;
+  top: -23px;
+  left: 5px;
+  height: 14px;
+  padding: 8px 6px 0 22px;
+  border-bottom: 1px solid #ccc;
+  font-family: Lato-Regular;
+  font-size: 10px;
+  line-height: 8px;
+  color: #6F694C;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  cursor: pointer;
+
+  .active & {
+    border-bottom: 1px solid #fff;
+  }
+
+  .pumpkin-pie & {
+    background: url('/interactive/2019/12/recipes/images/pumpkin-tab.png') no-repeat left 3px center #fff;
+  }
+
+  .hot-chocolate & {
+    left: 90px;
+    background: url('/interactive/2019/12/recipes/images/hot-chocolate.png') no-repeat left 3px center #fff;
+  }
+
+  .yule-log & {
+    left: 183px;
+    background: url('/interactive/2019/12/recipes/images/yule-log-tab.png') no-repeat left 3px center #fff;
+  }
+}
+
+.recipe__left {
+  display: block;
+  float: left;
+  width: 34%;
+  box-sizing: border-box;
+}
+.recipe__right {
+  display: block;
+  float: left;
+  width: 66%;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+img.recipe__portrait {
+  display: block;
+  float: left;
+  width: 100px;
+  border: 2px solid #3C4356;
+  margin: 0 0 10px;
+  padding: 0;
+  box-sizing: border-box;
+
+  // img {
+  //   max-width: 100%;
+  //   margin: 0;
+  //   padding: 0;
+  // }
+}
+.recipe__ingredients {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    font-family: Kalam-Regular;
+    font-size: 10px;
+    color: #6F694C;
+    border-bottom: 1px solid #4F576C;
+  }
+}
+.recipe__name {
+  text-align: center;
+  font-family: BilboSwashCaps-Regular;
+  font-size: 19px;
+  color: #4F576C;
+  margin: 0 0 10px;
+}
+.recipe__details {
+  margin-bottom: 10px;
+
+  &:before,
+  &:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
+.recipe__directions {
+  font-family: Kalam-Regular;
+  font-size: 10px;
+  color: #6F694C;
+  line-height: 12px;
+
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.recipe__servings {
+  margin-right: 10px;
+}
+
+.recipe__time {
+}
+
+.recipe__servings,
+.recipe__time {
+  display: block;
+  float: left;
+  font-family: Kalam-Regular;
+  font-size: 10px;
+  color: #6F694C;
+
+  .recipe-subhead {
+    float: left;
+    line-height: 1em;
+    padding-right: 5px;
+  }
+}
