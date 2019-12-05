@@ -5,6 +5,14 @@
   width: 324px;
   margin: 0 auto;
   overflow: visible;
+
+  @media screen and (min-width: 600px) {
+    width: 464px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 630px;
+  }
 }
 
 .recipe {
@@ -13,10 +21,28 @@
   top: 135px;
   background-color: #fff;
   padding: 7px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+
+  @media screen and (min-width: 600px) {
+    top: 180px;
+  }
+
+  @media screen and (min-width: 768px) {
+    top: 280px;
+  }
 
   &.opening {
     animation-name: openRecipe;
     animation-duration: 2s;
+
+    @media screen and (min-width: 600px) {
+      animation-name: openRecipe600;
+    }
+
+    @media screen and (min-width: 768px) {
+      animation-name: openRecipe768;
+    }
   }
 
   &.open {
@@ -29,6 +55,14 @@
   &.closing {
     animation-name: closeRecipe;
     animation-duration: 2s;
+
+    @media screen and (min-width: 600px) {
+      animation-name: closeRecipe600;
+    }
+
+    @media screen and (min-width: 768px) {
+      animation-name: closeRecipe768;
+    }
   }
 
 }
@@ -38,10 +72,64 @@
     z-index: 5;
     top: 135px;
     transform: scale(1.0);
+
+      @media screen and (min-width: 600px) {
+        top: 180px;
+      }
     }
   50% {
     z-index: 5;
     top: -150px;
+    transform: scale(1.0);
+  }
+  51% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes openRecipe600 {
+  0% {
+    z-index: 5;
+    top: 180px;
+    transform: scale(1.0);
+
+      @media screen and (min-width: 600px) {
+        top: 180px;
+      }
+    }
+  50% {
+    z-index: 5;
+    top: -150px;
+    transform: scale(1.0);
+  }
+  51% {
+    z-index: 8;
+  }
+  100% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes openRecipe768 {
+  0% {
+    z-index: 5;
+    top: 280px;
+    transform: scale(1.0);
+
+      @media screen and (min-width: 600px) {
+        top: 180px;
+      }
+    }
+  50% {
+    z-index: 5;
+    top: -220px;
     transform: scale(1.0);
   }
   51% {
@@ -72,15 +160,71 @@
     z-index: 5;
     top: 135px;
     transform: scale(1.0);
+
+      @media screen and (min-width: 600px) {
+        top: 180px;
+      }
+    }
+}
+
+@keyframes closeRecipe600 {
+  0% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+  50% {
+    z-index: 8;
+  }
+  51% {
+    z-index: 5;
+    top: -150px;
+    transform: scale(1.0);
+  }
+  100% {
+    z-index: 5;
+    top: 180px;
+    transform: scale(1.0);
+    }
+}
+
+@keyframes closeRecipe768 {
+  0% {
+    z-index: 8;
+    top: -30px;
+    transform: scale(1.15);
+  }
+  50% {
+    z-index: 8;
+  }
+  51% {
+    z-index: 5;
+    top: -220px;
+    transform: scale(1.0);
+  }
+  100% {
+    z-index: 5;
+    top: 280px;
+    transform: scale(1.0);
     }
 }
 
 .recipe-subhead {
+  @include recipeHeader;
   clear: both;
   margin: 0;
-  font-family: BilboSwashCaps-Regular;
-  font-size: 17px;
-  color: #4F576C;
+
+  .recipe__directions & {
+    @media screen and (min-width: 600px) {
+      margin-bottom: 5px;
+    }
+  }
+
+  .recipe__left & {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .recipe__tab {
@@ -88,33 +232,89 @@
   z-index: 9;
   top: -23px;
   left: 5px;
+  box-sizing: content-box;
   height: 14px;
   padding: 8px 6px 0 22px;
   border-bottom: 1px solid #ccc;
   font-family: Lato-Regular;
   font-size: 10px;
   line-height: 8px;
-  color: #6F694C;
+  color: $cardText;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   cursor: pointer;
+  background-image: url('/interactive/2019/12/recipes/images/pumpkin-tab.png');
+  background-repeat: no-repeat;
+  background-position: left 3px center;
+  background-color: #fff;
+  background-size: 17px;
 
-  .active & {
+  @media screen and (min-width: 600px) {
+    top: -27px;
+    font-size: 12px;
+    height: 18px;
+    background-size: 22px;
+    padding: 8px 10px 0 28px;
+
+    .open &,
+    .opening &,
+    .closing & {
+      top: -26px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    top: -39px;
+    font-size: 14px;
+    height: 24px;
+    background-size: 26px;
+    padding: 14px 14px 0 36px;
+    background-position: left 6px center;
+    left: 15px;
+
+    .open &,
+    .opening &,
+    .closing & {
+      top: -38px;
+    }
+  }
+
+
+  .active &,
+  .open &,
+  .opening &,
+  .closing & {
     border-bottom: 1px solid #fff;
   }
 
   .pumpkin-pie & {
-    background: url('/interactive/2019/12/recipes/images/pumpkin-tab.png') no-repeat left 3px center #fff;
+    background-image: url('/interactive/2019/12/recipes/images/pumpkin-tab.png');
   }
 
   .hot-chocolate & {
     left: 90px;
-    background: url('/interactive/2019/12/recipes/images/hot-chocolate.png') no-repeat left 3px center #fff;
+    background-image: url('/interactive/2019/12/recipes/images/hot-chocolate.png');
+
+    @media screen and (min-width: 600px) {
+      left: 112px;
+    }
+
+    @media screen and (min-width: 768px) {
+      left: 146px;
+    }
   }
 
   .yule-log & {
     left: 183px;
-    background: url('/interactive/2019/12/recipes/images/yule-log-tab.png') no-repeat left 3px center #fff;
+    background-image: url('/interactive/2019/12/recipes/images/yule-log-tab.png');
+
+    @media screen and (min-width: 600px) {
+      left: 228px;
+    }
+
+    @media screen and (min-width: 768px) {
+      left: 287px;
+    }
   }
 }
 
@@ -125,9 +325,11 @@
   box-sizing: border-box;
 }
 .recipe__right {
+  position: relative;
   display: block;
   float: left;
   width: 66%;
+  padding-top: 7px;
   padding-left: 10px;
   box-sizing: border-box;
 }
@@ -135,38 +337,32 @@
 img.recipe__portrait {
   display: block;
   float: left;
-  width: 100px;
+  width: 100%;
   border: 2px solid #3C4356;
   margin: 0 0 10px;
   padding: 0;
   box-sizing: border-box;
-
-  // img {
-  //   max-width: 100%;
-  //   margin: 0;
-  //   padding: 0;
-  // }
 }
 .recipe__ingredients {
   list-style-type: none;
   padding-left: 0;
 
   li {
-    font-family: Kalam-Regular;
-    font-size: 10px;
-    color: #6F694C;
-    border-bottom: 1px solid #4F576C;
+    @include recipeText;
+    border-bottom: 1px solid $accent1;
   }
 }
+
 .recipe__name {
-  text-align: center;
-  font-family: BilboSwashCaps-Regular;
-  font-size: 19px;
-  color: #4F576C;
-  margin: 0 0 10px;
+  @include recipeTitle;
 }
+
 .recipe__details {
   margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 
   &:before,
   &:after {
@@ -177,10 +373,11 @@ img.recipe__portrait {
 }
 
 .recipe__directions {
-  font-family: Kalam-Regular;
-  font-size: 10px;
-  color: #6F694C;
-  line-height: 12px;
+  @include recipeText;
+
+  @media screen and (min-width: 600px) {
+
+  }
 
   p {
     margin: 0 0 10px;
@@ -189,22 +386,73 @@ img.recipe__portrait {
 
 .recipe__servings {
   margin-right: 10px;
-}
 
-.recipe__time {
+  @media screen and (min-width: 600px) {
+    margin-right: 25px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 40px;
+  }
+
+  span {
+    text-align: center;
+    width: 20px;
+  }
 }
 
 .recipe__servings,
 .recipe__time {
+  @include recipeText;
+  line-height: 1em;
   display: block;
   float: left;
-  font-family: Kalam-Regular;
-  font-size: 10px;
-  color: #6F694C;
+
+  p {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding-top: 4px;
+    border-bottom: 1px solid $accent1;
+
+    @media screen and (min-width: 600px) {
+      padding-top: 6px;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding-top: 8px;
+    }
+  }
 
   .recipe-subhead {
     float: left;
     line-height: 1em;
     padding-right: 5px;
+  }
+}
+
+// .recipe__servings
+
+
+.recipe__decor-left {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.recipe__decor-right {
+  display: none;
+
+  @media screen and (min-width: 600px) {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: auto;
+    width: 40px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 50px;
   }
 }

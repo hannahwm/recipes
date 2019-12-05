@@ -12,6 +12,7 @@ var $ = jQuery;
   };
 
   $.fn.openRecipe.options = {
+      recipe: ".recipe",
       tab: ".recipe__tab"
   };
 
@@ -27,6 +28,7 @@ var $ = jQuery;
       bindElements: function() {
         var self = this;
 
+        self.$recipe = self.$container.find(self.options.recipe);
         self.$tab = self.$container.find(self.options.tab);
 
     },
@@ -36,6 +38,13 @@ var $ = jQuery;
       $(self.options.tab).each((function() {
         $(this).on("click", (function() {
           var tab = $(this);
+          self.openRecipe(tab);
+        }))
+      }));
+
+      $(self.options.recipe).each((function() {
+        $(this).on("click", (function() {
+          var tab = $(this).children(self.options.tab);
           self.openRecipe(tab);
         }))
       }));
@@ -55,6 +64,10 @@ var $ = jQuery;
     openRecipe: function(tab) {
       var self = this;
       var target = $(tab).parents(".recipe");
+
+      if (target.hasClass("open")) {
+        return;
+      }
       target.addClass("opening");
       setTimeout((function() {
         target.addClass("open");
@@ -81,6 +94,13 @@ var $ = jQuery;
 
 (function init () {
   $(document).ready((function() {
+    var pTags = $(document).find("p");
+    for (var i=0; i<pTags.length; i++) {
+  	   var elm = pTags[i];
+    	if ($(elm).html().replace(/\s|&nbsp;/g, '').length == 0) {
+    	  $(elm).css("display", "none");
+    	}
+    }
     $(".recipes-wrapper").openRecipe();
   }));
 })();

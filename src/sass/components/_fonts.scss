@@ -1,0 +1,44 @@
+@mixin recipeText {
+  font-family: 'Kalam', cursive;
+  font-size: 10px;
+  color: $cardText;
+  line-height: 1.25em;
+
+  @media screen and (min-width: 600px) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 17px;
+  }
+}
+
+@mixin recipeTitle {
+  text-align: center;
+  font-family: 'Bilbo Swash Caps', cursive;
+  font-size: 19px;
+  color: $accent1;
+  margin: 0 0 10px -20px;
+
+  @media screen and (min-width: 600px) {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 34px;
+  }
+}
+
+@mixin recipeHeader {
+  font-family: 'Bilbo Swash Caps', cursive;
+  font-size: 17px;
+  color: $accent1;
+
+  @media screen and (min-width: 600px) {
+    font-size: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+}
