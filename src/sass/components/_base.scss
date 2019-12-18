@@ -9,6 +9,34 @@ body {
 	padding: 0;
 	min-height: 100vh;
 	overflow-x: hidden;
+
+	@media print {
+		background-color: #fff;
+	}
+}
+
+.print-container {
+	display: none;
+
+	@media screen {
+		display: none;
+	}
+
+	@media print {
+		position: relative;
+		display: block;
+    width: 1200px;
+    margin: 150px auto 0;
+	}
+}
+
+.print-container__logo {
+	@media print {
+		position: absolute;
+		z-index: 9;
+		right: 0;
+		bottom: 50px;
+	}
 }
 
 .recipes-wrapper {
@@ -24,6 +52,10 @@ body {
 
 	@media screen and (min-width: 1200px) {
 		margin-bottom: 400px;
+	}
+
+	@media print {
+		display: none;
 	}
 }
 

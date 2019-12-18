@@ -32,6 +32,22 @@
     top: 280px;
   }
 
+  @media print {
+    position: relative;
+    display: block;
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    border: 1px solid #ccc;
+  }
+
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+
   &.opening {
     animation-name: openRecipe;
     animation-duration: 2s;
@@ -50,6 +66,10 @@
     top: -30px;
     transform: scale(1.15);
     animation-play-state: paused;
+
+    @media print {
+      transform: none;
+    }
   }
 
   &.closing {
@@ -218,6 +238,10 @@
     @media screen and (min-width: 600px) {
       margin-bottom: 5px;
     }
+
+    @media print {
+      margin-bottom: 20px;
+    }
   }
 
   .recipe__left & {
@@ -231,7 +255,8 @@
   position: absolute;
   z-index: 9;
   top: -23px;
-  left: 5px;
+  right: 5px;
+  left: auto;
   box-sizing: content-box;
   height: 14px;
   padding: 8px 6px 0 22px;
@@ -239,7 +264,7 @@
   font-family: Lato-Regular;
   font-size: 10px;
   line-height: 8px;
-  color: $cardText;
+  color: $accent1;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   cursor: pointer;
@@ -270,7 +295,6 @@
     background-size: 26px;
     padding: 14px 14px 0 36px;
     background-position: left 6px center;
-    left: 15px;
 
     .open &,
     .opening &,
@@ -279,6 +303,9 @@
     }
   }
 
+  @media print {
+    display: none;
+  }
 
   .active &,
   .open &,
@@ -287,42 +314,49 @@
     border-bottom: 1px solid #fff;
   }
 
-  .pumpkin-pie & {
+  .champurrado & {
+    right: 10px;
+    left: auto;
     background-image: url('/interactive/2019/12/recipes/images/pumpkin-tab.png');
   }
 
-  .hot-chocolate & {
-    left: 90px;
+  .cookies & {
+    right: 90px;
     background-image: url('/interactive/2019/12/recipes/images/hot-chocolate.png');
 
     @media screen and (min-width: 600px) {
-      left: 112px;
+      right: 112px;
     }
 
     @media screen and (min-width: 768px) {
-      left: 146px;
+      right: 15px;
     }
   }
 
   .yule-log & {
-    left: 183px;
+    right: 183px;
     background-image: url('/interactive/2019/12/recipes/images/yule-log-tab.png');
 
     @media screen and (min-width: 600px) {
-      left: 228px;
+      right: 228px;
     }
 
     @media screen and (min-width: 768px) {
-      left: 287px;
+      right: 287px;
     }
   }
 }
 
 .recipe__left {
+  position: relative;
   display: block;
   float: left;
   width: 34%;
   box-sizing: border-box;
+
+  @media print {
+    padding-left: 20px;
+  }
 }
 .recipe__right {
   position: relative;
@@ -332,6 +366,11 @@
   padding-top: 7px;
   padding-left: 10px;
   box-sizing: border-box;
+
+  @media print {
+    padding-left: 60px;
+    padding-top: 40px;
+  }
 }
 
 img.recipe__portrait {
@@ -342,6 +381,10 @@ img.recipe__portrait {
   margin: 0 0 10px;
   padding: 0;
   box-sizing: border-box;
+
+  @media print {
+    opacity: 0;
+  }
 }
 .recipe__ingredients {
   list-style-type: none;
@@ -364,6 +407,10 @@ img.recipe__portrait {
     margin-bottom: 20px;
   }
 
+  @media print {
+    margin-bottom: 40px;
+  }
+
   &:before,
   &:after {
     display: table;
@@ -373,6 +420,7 @@ img.recipe__portrait {
 }
 
 .recipe__directions {
+  position: relative;
   @include recipeText;
 
   @media screen and (min-width: 600px) {
@@ -381,6 +429,10 @@ img.recipe__portrait {
 
   p {
     margin: 0 0 10px;
+
+    @media print {
+      line-height: 1.5em;
+    }
   }
 }
 
@@ -395,9 +447,17 @@ img.recipe__portrait {
     margin-right: 40px;
   }
 
-  span {
+  @media print {
+    margin-right: 80px;
+  }
+
+  p {
     text-align: center;
     width: 20px;
+
+    @media print {
+      width: 80px;
+    }
   }
 }
 
@@ -422,6 +482,10 @@ img.recipe__portrait {
     @media screen and (min-width: 768px) {
       padding-top: 8px;
     }
+
+    @media print {
+			padding-top: 16px;
+    }
   }
 
   .recipe-subhead {
@@ -431,13 +495,18 @@ img.recipe__portrait {
   }
 }
 
-// .recipe__servings
-
-
 .recipe__decor-left {
   display: block;
   width: 80%;
   margin: 0 auto;
+
+  @media print {
+    position: absolute;
+    height: 280px;
+    width: auto;
+    top: 20px;
+    left: 60px;
+  }
 }
 
 .recipe__decor-right {
@@ -454,5 +523,26 @@ img.recipe__portrait {
 
   @media screen and (min-width: 768px) {
     width: 50px;
+  }
+}
+
+.printBtn {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  @include recipeText;
+  height: 30px;
+  text-indent: -9999px;
+  overflow: hidden;
+  // margin-left: 10px;
+  padding: 5px 5px 5px 35px;
+  background: url('/interactive/2019/12/recipes/images/print.png') no-repeat left 5px center;
+  background-size: 25px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  @media print {
+    display: none;
   }
 }

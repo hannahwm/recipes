@@ -43,19 +43,28 @@ var $ = jQuery;
 
       $(self.options.recipe).each(function() {
         $(this).on("click", function() {
+          var printBtn = $(".printBtn");
           var tab = $(this).children(self.options.tab);
-          self.openRecipe(tab);
+
+          //run unless clicked on the print button
+           if (!(printBtn.is(event.target))) {
+             self.openRecipe(tab);
+           }
+
         })
       });
 
-      var openRecipe = $("#open");
 
       //close highlighted story on click outside and resume cycleStories
       $(document).on('click', function(event) {
-        // var isClickInside = openRecipe.contains(event.target);
+        var curOpenRecipe = document.getElementById("open");
+        var isClickInside;
+        if (curOpenRecipe) {
+          isClickInside = curOpenRecipe.contains(event.target);
+        }
 
         //clicked outside
-        if (!(openRecipe.is(event.target))) {
+        if (!isClickInside) {
           self.closeRecipe();
         }
       });

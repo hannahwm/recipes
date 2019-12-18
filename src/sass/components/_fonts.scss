@@ -11,6 +11,10 @@
   @media screen and (min-width: 768px) {
     font-size: 17px;
   }
+
+  @media print {
+    font-size: 32px;
+  }
 }
 
 @mixin recipeTitle {
@@ -27,6 +31,11 @@
   @media screen and (min-width: 768px) {
     font-size: 34px;
   }
+
+  @media print {
+    font-size: 68px;
+    margin-bottom: 40px;
+  }
 }
 
 @mixin recipeHeader {
@@ -40,5 +49,9 @@
 
   @media screen and (min-width: 768px) {
     font-size: 30px;
+  }
+
+  @media print {
+    font-size: 48px;
   }
 }
